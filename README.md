@@ -140,24 +140,6 @@ Then visit `http://localhost:8080` (or `http://localhost:3000` with `serve`).
 
 ---
 
-## 🚢 Deployment
-
-### Netlify (drag & drop)
-1. Go to [netlify.com](https://netlify.com) → **Add new site → Deploy manually**
-2. Drag the entire `Portofolio/` folder onto the upload area
-3. Done — live URL generated instantly
-
-### GitHub Pages
-```bash
-git init
-git add .
-git commit -m "Initial portfolio"
-git remote add origin https://github.com/santoshkarimisetti-creator/<repo-name>.git
-git push -u origin main
-```
-Then enable **Pages** in repo Settings → Pages → Branch: `main` / `/ (root)`.
-
----
 
 ## ⚙️ CSS Custom Properties
 
