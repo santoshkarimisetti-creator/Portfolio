@@ -137,10 +137,10 @@ if (toggleBtn) {
   }
 
   // ── Muzzle tip world coordinates ─────────────────────────────────────────
-  // Barrel tip is ~38px from pivot along local +X axis
+  // Barrel tip is ~44px from pivot (updated for larger metallic gun SVG)
   function getMuzzleTip(angleDeg) {
     const rad = angleDeg * Math.PI / 180;
-    return { x: mx + Math.cos(rad) * 38, y: my + Math.sin(rad) * 38 };
+    return { x: mx + Math.cos(rad) * 44, y: my + Math.sin(rad) * 44 };
   }
 
   // ── Interactive selector ──────────────────────────────────────────────────
@@ -186,10 +186,10 @@ if (toggleBtn) {
     if (isFiring) return;
     const target = e.target.closest(TARGETS);
 
-    // For links/buttons we want to intercept and redirect AFTER the animation
-    const isLink = target && (target.tagName === 'A' || target.tagName === 'BUTTON' ||
-                              target.classList.contains('btn'));
-    if (isLink) e.preventDefault();
+    // Only intercept <a> link navigation — buttons fire their own
+    // event listeners immediately on the original click (no need to prevent/re-fire)
+    const isAnchor = target && target.tagName === 'A';
+    if (isAnchor) e.preventDefault();
 
     isFiring = true;
     gun.style.cursor = 'none';
@@ -210,7 +210,7 @@ if (toggleBtn) {
       } else {
         targetAngle = spinEnd % 360;
         // Step 2 – fire after spin completes
-        doFire(target, isLink);
+        doFire(target, isAnchor);
       }
     }
     requestAnimationFrame(spinFrame);
@@ -269,8 +269,8 @@ if (toggleBtn) {
                 window.location.href = targetEl.href;
               }
             }
-          } else if (targetEl.tagName === 'BUTTON') {
-            targetEl.click();
+          // Buttons: their click listeners already ran on the original event.
+          // Do NOT call .click() again — that causes an infinite loop.
           }
         }
       }, 120);
@@ -328,7 +328,8 @@ if (toggleBtn) {
 
   // ── Impact sparks + ring ──────────────────────────────────────────────────
   function spawnImpact(x, y) {
-    const COLORS = ['#00D4FF', '#2E86FF', '#ffffff', '#ffdd00', '#ff4b4b', '#ffaa00'];
+    // Warm metallic sparks: steel + copper + ember tones (no neon blue)
+    const COLORS = ['#ffaa30', '#ff7010', '#ffdd80', '#cc8833', '#ffffff', '#ff5500'];
     const COUNT  = 14;
 
     for (let i = 0; i < COUNT; i++) {
