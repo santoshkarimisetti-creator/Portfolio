@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karimisetti Santosh Kumar – Portfolio</title>
+  <meta name="description" content="AI & Full‑Stack Developer portfolio – Karimisetti Santosh Kumar" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Slab:wght@600;700&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Cyberpunk Gun Cursor -->
+  <div id="gun-cursor" aria-hidden="true">
+    <svg id="gun-svg" viewBox="0 0 40 20" xmlns="http://www.w3.org/2000/svg" width="40" height="20">
+      <!-- Barrel -->
+      <rect x="16" y="8.5" width="22" height="3" rx="1" fill="#00D4FF"/>
+      <!-- Body -->
+      <rect x="8"  y="7"  width="11" height="6" rx="1.5" fill="#1a2a3a"/>
+      <rect x="9"  y="8"  width="9"  height="4" rx="1"   fill="#0a1a2a"/>
+      <!-- Grip -->
+      <rect x="10" y="13" width="6"  height="5" rx="1.5" fill="#1a2a3a"/>
+      <rect x="11" y="14" width="4"  height="3" rx="1"   fill="#0a1a2a"/>
+      <!-- Sight -->
+      <rect x="11" y="6"  width="2.5" height="1.5" rx="0.4" fill="#00D4FF"/>
+      <!-- Detail lines -->
+      <line x1="9" y1="9.5"  x2="18" y2="9.5"  stroke="#00D4FF" stroke-width="0.4" opacity="0.5"/>
+      <line x1="9" y1="10.5" x2="18" y2="10.5" stroke="#00D4FF" stroke-width="0.4" opacity="0.5"/>
+      <!-- Muzzle tip -->
+      <rect x="37" y="9" width="3" height="2" rx="0.8" fill="#00D4FF"/>
+      <!-- Trigger -->
+      <path d="M13 13 Q12.5 15 12 16" stroke="#00D4FF" stroke-width="0.8" fill="none"/>
+    </svg>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <nav class="nav-container">
+      <a href="#home" class="logo">Santosh Kumar</a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="section hero">
+    <div class="hero-content">
+      <img src="./assets/img/mine-1.jpeg" alt="Santosh Kumar" class="hero-img" />
+      <div class="hero-text">
+        <h1 class="hero-name">Karimisetti Santosh Kumar</h1>
+        <p class="hero-tagline">AI &amp; Full‑Stack Developer</p>
+        <p class="hero-location">Rajam, Andhra Pradesh</p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary" id="btn-view-projects">View Projects</a>
+          <a href="./resume.pdf" class="btn btn-secondary" id="btn-download-resume" download="Santosh_Kumar_Resume.pdf">Download Resume</a>
+        </div>
+        <div class="hero-social">
+          <a href="https://www.linkedin.com/in/karimisetti-santosh-kumar-78a36a293/" target="_blank" rel="noopener" class="social-icon" id="link-linkedin">LinkedIn ↗</a>
+          <a href="https://github.com/santoshkarimisetti-creator" target="_blank" rel="noopener" class="social-icon" id="link-github">GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section about">
+    <div class="container">
+      <h2 class="reveal">About Me</h2>
+      <div class="about-grid">
+        <div class="about-img reveal">
+          <img src="./assets/img/mine-1.jpeg" alt="Santosh Kumar" />
+        </div>
+        <div class="about-text reveal">
+          <p>I'm Santosh Kumar, a final-year Computer Science student at GMR Institute of Technology, building AI-integrated full-stack applications using Python, Flask, Django, React.js, and MongoDB. I don't just write code — I design systems: my projects include a real-time AI-powered driver safety system with a live ML inference pipeline, and a deployed AI resume analyzer that runs on Netlify and Render.</p>
+          <p>I've worked in a professional team during my internship at DataPro Computers, shipped real features on a shared codebase, and consistently pursued independent learning through certifications in prompt engineering, data analysis, and software engineering.</p>
+          <div class="skill-tags">
+            <h3>Languages</h3>
+            <span class="pill">Python</span><span class="pill">C</span><span class="pill">C++</span><span class="pill">Java</span>
+            <h3>Web &amp; Backend</h3>
+            <span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">JavaScript</span><span class="pill">Flask</span><span class="pill">Django</span><span class="pill">React.js</span><span class="pill">PHP</span>
+            <h3>AI &amp; ML</h3>
+            <span class="pill">NumPy</span><span class="pill">Pandas</span><span class="pill">Scikit‑learn</span><span class="pill">TensorFlow</span><span class="pill">Keras</span>
+            <h3>Databases</h3>
+            <span class="pill">MySQL</span><span class="pill">MongoDB</span>
+            <h3>Tools</h3>
+            <span class="pill">Git</span><span class="pill">GitHub</span><span class="pill">VS Code</span><span class="pill">Tableau</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section projects">
+    <div class="container">
+      <h2 class="reveal">Projects</h2>
+      <div class="grid cards-animate">
+        <div class="card project-card" id="card-project-1">
+          <h3>AI‑Powered Driver Safety &amp; Passenger Security System</h3>
+          <div class="stack-pills">
+            <span class="pill">Flask</span><span class="pill">React.js</span><span class="pill">MongoDB</span><span class="pill">ML Inference</span>
+          </div>
+          <p>Multi‑component real‑time system with ML inference for drowsiness/distraction detection, Flask backend, React.js dashboard, MongoDB.</p>
+          <a href="https://github.com/santoshkarimisetti-creator/Intelligent-Vehicle-Safety-and-Passenger-Security-System" class="btn btn-secondary" target="_blank" rel="noopener" id="link-project-1-github">GitHub ↗</a>
+        </div>
+        <div class="card project-card" id="card-project-2">
+          <h3>AI Resume Analyzer</h3>
+          <div class="stack-pills">
+            <span class="pill">Python</span><span class="pill">Flask</span><span class="pill">React.js</span><span class="pill">Netlify</span><span class="pill">Render</span>
+          </div>
+          <p>Full‑stack AI‑powered resume analysis tool with engineered prompts, deployed on Netlify + Render.</p>
+          <a href="https://ai-resume-analyzer-1.netlify.app/" class="btn btn-primary" target="_blank" rel="noopener" id="link-project-2-live">Live ↗</a>
+          <a href="https://github.com/santoshkarimisetti-creator/AI-Resume-Analyzer" class="btn btn-secondary" target="_blank" rel="noopener" id="link-project-2-github">GitHub ↗</a>
+        </div>
+        <div class="card project-card" id="card-project-3">
+          <h3>Library Management System</h3>
+          <div class="stack-pills">
+            <span class="pill">Django</span><span class="pill">MySQL</span><span class="pill">JavaScript</span>
+          </div>
+          <p>Django + MySQL web app with full schema design, CRUD workflows, and JS‑enhanced frontend.</p>
+          <a href="https://github.com/santoshkarimisetti-creator/Library-Management-System" class="btn btn-secondary" target="_blank" rel="noopener" id="link-project-3-github">GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section id="certifications" class="section certifications">
+    <div class="container">
+      <h2 class="reveal">Certifications</h2>
+      <div class="grid cards-animate">
+        <div class="card cert-card" id="card-cert-1">
+          <h4>Prompt Engineering for ChatGPT</h4>
+          <p>Coursera – 2024</p>
+          <a href="./assets/Certificates/Prompt%20Engineering%20for%20ChatGPT%20-%20Coursera.png" class="btn btn-secondary" target="_blank" id="btn-cert-1">View Certificate ↗</a>
+        </div>
+        <div class="card cert-card" id="card-cert-2">
+          <h4>Data Analysis Using Python</h4>
+          <p>Coursera – 2024</p>
+          <a href="./assets/Certificates/Data%20Analysis%20Using%20Python%20-%20Coursera.png" class="btn btn-secondary" target="_blank" id="btn-cert-2">View Certificate ↗</a>
+        </div>
+        <div class="card cert-card" id="card-cert-3">
+          <h4>Business Intelligence &amp; Analytics</h4>
+          <p>NPTEL – 2025</p>
+          <a href="./assets/Certificates/Businnes%20Intelligence%26Analytics%20-%20NPTEL.png" class="btn btn-secondary" target="_blank" id="btn-cert-3">View Certificate ↗</a>
+        </div>
+        <div class="card cert-card" id="card-cert-4">
+          <h4>Software Engineering</h4>
+          <p>NPTEL – 2025</p>
+          <a href="./assets/Certificates/Software%20Engineering%20-NPTEL.png" class="btn btn-secondary" target="_blank" id="btn-cert-4">View Certificate ↗</a>
+        </div>
+        <div class="card cert-card" id="card-cert-5">
+          <h4>Programming in Modern C++</h4>
+          <p>NPTEL – 2025</p>
+          <a href="./assets/Certificates/Programming%20in%20Modern%20C%2B%2B%20-%20NPTEL.png" class="btn btn-secondary" target="_blank" id="btn-cert-5">View Certificate ↗</a>
+        </div>
+        <div class="card cert-card" id="card-cert-6">
+          <h4>TCS Data Visualization</h4>
+          <p>Forage – 2024</p>
+          <a href="./assets/Certificates/Tata%20Data%20Visualization%20internship.png" class="btn btn-secondary" target="_blank" id="btn-cert-6">View Certificate ↗</a>
+        </div>
+        <div class="card cert-card" id="card-cert-7">
+          <h4>Introduction to Generative AI</h4>
+          <p>Coursera – 2024</p>
+          <a href="./assets/Certificates/Introduction%20to%20Generative%20AI%20-%20Coursera.png" class="btn btn-secondary" target="_blank" id="btn-cert-7">View Certificate ↗</a>
+        </div>
+        <div class="card cert-card" id="card-cert-8">
+          <h4>Foundations: Data, Data Everywhere</h4>
+          <p>Coursera – 2024</p>
+          <a href="./assets/Certificates/Foundations%20Data%2C%20Data%20Everywhere%20-%20Coursera.png" class="btn btn-secondary" target="_blank" id="btn-cert-8">View Certificate ↗</a>
+        </div>
+        <div class="card cert-card" id="card-cert-9">
+          <h4>Tableau for Beginners</h4>
+          <p>2024</p>
+          <a href="./assets/Certificates/Tableau%20for%20Beginners.png" class="btn btn-secondary" target="_blank" id="btn-cert-9">View Certificate ↗</a>
+        </div>
+        <div class="card cert-card" id="card-cert-10">
+          <h4>Summer Internship @ DataPro</h4>
+          <p>DataPro Computers – 2024</p>
+          <a href="./assets/Certificates/Summer%20Internship%20%40%20DataPro.jpg" class="btn btn-secondary" target="_blank" id="btn-cert-10">View Certificate ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <h2 class="reveal">Get In Touch</h2>
+      <div class="contact-card card" id="card-contact">
+        <p><strong>Karimisetti Santosh Kumar</strong></p>
+        <p>Email: <a href="mailto:santoshkarimisetti@gmail.com" id="link-email">santoshkarimisetti@gmail.com</a></p>
+        <p>Phone: <a href="tel:+918919841484" id="link-phone">+91 8919841484</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/karimisetti-santosh-kumar-78a36a293/" target="_blank" rel="noopener" id="link-contact-linkedin">linkedin.com/in/karimisetti-santosh-kumar</a></p>
+        <p>GitHub: <a href="https://github.com/santoshkarimisetti-creator" target="_blank" rel="noopener" id="link-contact-github">github.com/santoshkarimisetti-creator</a></p>
+        <a href="mailto:santoshkarimisetti@gmail.com" class="btn btn-primary contact-btn" id="btn-send-message">Send a Message ✉</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Karimisetti Santosh Kumar &middot;
+        <a href="https://www.linkedin.com/in/karimisetti-santosh-kumar-78a36a293/" target="_blank" rel="noopener">LinkedIn</a> &middot;
+        <a href="https://github.com/santoshkarimisetti-creator" target="_blank" rel="noopener">GitHub</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
