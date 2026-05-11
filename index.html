@@ -5,10 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Karimisetti Santosh Kumar – Portfolio</title>
-  <meta name="description" content="AI & Full‑Stack Developer portfolio – Karimisetti Santosh Kumar" />
+  <meta name="description" content="AI &amp; Full‑Stack Developer portfolio – Karimisetti Santosh Kumar" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Slab:wght@600;700&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Slab:wght@600;700&family=Great+Vibes&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -17,7 +17,6 @@
   <div id="gun-cursor" aria-hidden="true">
     <svg id="gun-svg" viewBox="0 0 80 44" xmlns="http://www.w3.org/2000/svg" width="52" height="28">
       <defs>
-        <!-- Dark steel slide gradient -->
         <linearGradient id="gSlide" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%"   stop-color="#6a6a6a"/>
           <stop offset="12%"  stop-color="#2e2e2e"/>
@@ -25,105 +24,70 @@
           <stop offset="80%"  stop-color="#1c1c1c"/>
           <stop offset="100%" stop-color="#484848"/>
         </linearGradient>
-        <!-- Barrel tubular gradient -->
         <linearGradient id="gBarrel" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%"   stop-color="#5a5a5a"/>
           <stop offset="35%"  stop-color="#181818"/>
           <stop offset="65%"  stop-color="#111"/>
           <stop offset="100%" stop-color="#4e4e4e"/>
         </linearGradient>
-        <!-- Frame gradient -->
         <linearGradient id="gFrame" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%"   stop-color="#1e1e1e"/>
           <stop offset="50%"  stop-color="#242424"/>
           <stop offset="100%" stop-color="#1a1a1a"/>
         </linearGradient>
-        <!-- Grip gradient -->
         <linearGradient id="gGrip" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%"   stop-color="#191919"/>
           <stop offset="100%" stop-color="#0d0d0d"/>
         </linearGradient>
-        <!-- Trigger guard -->
         <linearGradient id="gGuard" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%"   stop-color="#282828"/>
           <stop offset="100%" stop-color="#161616"/>
         </linearGradient>
-        <!-- Silver highlight overlay -->
         <linearGradient id="gShine" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%"   stop-color="rgba(255,255,255,0.22)"/>
           <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
         </linearGradient>
       </defs>
-
-      <!-- ── Barrel (extends right, tubular) ── -->
       <rect x="54" y="12" width="22" height="6" rx="1.2" fill="url(#gBarrel)"/>
-      <!-- Barrel highlight -->
       <rect x="55" y="12.3" width="20" height="1.5" rx="0.5" fill="rgba(180,180,180,0.18)"/>
-      <!-- Muzzle crown rings -->
       <rect x="73" y="11.5" width="3" height="7" rx="1" fill="#383838"/>
       <rect x="73.5" y="12" width="2" height="6" rx="0.8" fill="#2a2a2a"/>
-      <!-- Muzzle hole -->
       <ellipse cx="75" cy="15" rx="1" ry="1.5" fill="#090909"/>
-
-      <!-- ── Slide (upper receiver) ── -->
       <rect x="12" y="9" width="44" height="12" rx="2" fill="url(#gSlide)"/>
-      <!-- Slide top silver sheen -->
       <rect x="13" y="9.4" width="42" height="2.5" rx="1" fill="url(#gShine)"/>
-      <!-- Ejection port opening -->
       <rect x="32" y="10" width="14" height="8" rx="0.8" fill="#090909"/>
       <rect x="32.5" y="10.5" width="13" height="7" rx="0.5" fill="#060606"/>
-      <!-- Slide serrations (rear – 5 grooves) -->
       <line x1="14" y1="9.5"  x2="14" y2="20.5" stroke="#666" stroke-width="1" stroke-linecap="round"/>
       <line x1="16.5" y1="9.5" x2="16.5" y2="20.5" stroke="#666" stroke-width="1" stroke-linecap="round"/>
       <line x1="19"  y1="9.5"  x2="19" y2="20.5"  stroke="#666" stroke-width="1" stroke-linecap="round"/>
       <line x1="21.5" y1="9.5" x2="21.5" y2="20.5" stroke="#666" stroke-width="1" stroke-linecap="round"/>
       <line x1="24"  y1="9.5"  x2="24" y2="20.5"  stroke="#666" stroke-width="1" stroke-linecap="round"/>
-      <!-- Front sight blade -->
       <rect x="50" y="7.5" width="3" height="2.5" rx="0.4" fill="#555"/>
       <rect x="50.5" y="7.5" width="2" height="2" rx="0.3" fill="#999"/>
-      <!-- Rear sight (U-notch) -->
       <rect x="14" y="7.5" width="6" height="2.5" rx="0.4" fill="#444"/>
       <rect x="14.5" y="7.5" width="5" height="1.8" rx="0.3" fill="#777"/>
-      <!-- Rear sight white dot -->
       <circle cx="17" cy="8.5" r="0.7" fill="#ddd"/>
-      <!-- Slide bottom edge subtle chrome -->
       <rect x="13" y="19.5" width="42" height="1" rx="0.4" fill="rgba(120,120,120,0.25)"/>
-      <!-- Hammer spur -->
       <path d="M12,12 Q9,12 9,15 Q9,18 12,18" fill="#2a2a2a" stroke="#555" stroke-width="0.6"/>
-
-      <!-- ── Frame (lower receiver) ── -->
       <rect x="12" y="21" width="28" height="8" rx="1.5" fill="url(#gFrame)"/>
-      <!-- Frame top rail edge -->
       <line x1="12" y1="21.4" x2="40" y2="21.4" stroke="#3a3a3a" stroke-width="0.6"/>
-      <!-- Picatinny rail slots -->
       <rect x="26" y="27" width="13" height="2" rx="0.3" fill="#111"/>
       <line x1="28" y1="27" x2="28" y2="29" stroke="#2a2a2a" stroke-width="0.7"/>
       <line x1="31" y1="27" x2="31" y2="29" stroke="#2a2a2a" stroke-width="0.7"/>
       <line x1="34" y1="27" x2="34" y2="29" stroke="#2a2a2a" stroke-width="0.7"/>
-      <!-- Slide lock lever -->
       <rect x="26" y="22" width="5" height="2" rx="0.8" fill="#3d3d3d"/>
       <rect x="26.5" y="22.3" width="4" height="1.4" rx="0.5" fill="#555"/>
-
-      <!-- ── Trigger Guard ── -->
       <path d="M27,21 Q44,21 45,27 Q43,31 41,31 Q26,31 25,27 Z" fill="url(#gGuard)" stroke="#2e2e2e" stroke-width="0.5"/>
-      <!-- Guard inner highlight arc -->
       <path d="M28,21.5 Q43,21.5 44,27" fill="none" stroke="rgba(90,90,90,0.35)" stroke-width="0.6"/>
-
-      <!-- ── Trigger ── -->
       <path d="M33,22.5 Q35,26 33,30" stroke="#606060" stroke-width="2" fill="none" stroke-linecap="round"/>
       <path d="M33,22.5 Q35,26 33,30" stroke="#aaa" stroke-width="0.6" fill="none" stroke-linecap="round"/>
-
-      <!-- ── Grip ── -->
       <path d="M12,28 L11,42 Q11,44 13.5,44 L20,44 Q22,44 21.5,42 L21,29 Z" fill="url(#gGrip)"/>
-      <!-- Grip stippling lines -->
       <line x1="12.5" y1="31" x2="20.5" y2="31" stroke="#2a2a2a" stroke-width="0.8"/>
       <line x1="12.5" y1="33.5" x2="20.5" y2="33.5" stroke="#2a2a2a" stroke-width="0.8"/>
       <line x1="12.5" y1="36"   x2="20.5" y2="36"   stroke="#2a2a2a" stroke-width="0.8"/>
       <line x1="12.5" y1="38.5" x2="20.5" y2="38.5" stroke="#2a2a2a" stroke-width="0.8"/>
       <line x1="12.5" y1="41"   x2="20.5" y2="41"   stroke="#2a2a2a" stroke-width="0.8"/>
-      <!-- Grip side highlight -->
       <rect x="20" y="29" width="1.5" height="13" rx="0.5" fill="rgba(90,90,90,0.2)"/>
-      <!-- Magazine base plate -->
       <rect x="12" y="43" width="9" height="2" rx="0.8" fill="#333"/>
       <rect x="12.5" y="43.3" width="8" height="1.2" rx="0.5" fill="#444"/>
     </svg>
@@ -134,11 +98,12 @@
     <nav class="nav-container">
       <a href="#home" class="logo">Santosh Kumar</a>
       <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#certifications">Certifications</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#home"           class="nav-link" data-section="home">Home</a></li>
+        <li><a href="#about"          class="nav-link" data-section="about">About</a></li>
+        <li><a href="#experience"     class="nav-link" data-section="experience">Experience</a></li>
+        <li><a href="#projects"       class="nav-link" data-section="projects">Projects</a></li>
+        <li><a href="#certifications" class="nav-link" data-section="certifications">Certifications</a></li>
+        <li><a href="#contact"        class="nav-link" data-section="contact">Contact</a></li>
       </ul>
       <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
     </nav>
@@ -147,20 +112,39 @@
   <!-- Hero Section -->
   <section id="home" class="section hero">
     <div class="hero-content">
-      <img src="./assets/img/mine-1.jpeg" alt="Santosh Kumar" class="hero-img" />
-      <div class="hero-text">
-        <h1 class="hero-name">Karimisetti Santosh Kumar</h1>
-        <p class="hero-tagline">AI &amp; Full‑Stack Developer</p>
-        <p class="hero-location">Rajam, Andhra Pradesh</p>
-        <div class="hero-cta">
-          <a href="#projects" class="btn btn-primary" id="btn-view-projects">View Projects</a>
-          <a href="./resume.pdf" class="btn btn-secondary" id="btn-download-resume" download="Santosh_Kumar_Resume.pdf">Download Resume</a>
-        </div>
-        <div class="hero-social">
-          <a href="https://www.linkedin.com/in/karimisetti-santosh-kumar-78a36a293/" target="_blank" rel="noopener" class="social-icon" id="link-linkedin">LinkedIn ↗</a>
-          <a href="https://github.com/santoshkarimisetti-creator" target="_blank" rel="noopener" class="social-icon" id="link-github">GitHub ↗</a>
+
+      <!-- Left column: photo + text -->
+      <div class="hero-left">
+        <img src="./assets/img/mine-1.jpeg" alt="Santosh Kumar" class="hero-img" />
+        <div class="hero-text">
+          <p class="hero-label"><span class="hero-label-dash"></span>HELLO, I'M</p>
+          <h1 class="hero-name">Karimisetti Santosh Kumar</h1>
+          <p class="hero-role-line">I'm a&nbsp;<span id="role-text" class="role-word"></span><span class="typing-cursor" id="role-cursor">|</span></p>
+          <p class="hero-tagline-sub">Final Year CSE &middot; Open to full-time roles &middot; Rajam, Andhra Pradesh</p>
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary" id="btn-view-projects">View Projects</a>
+            <a href="./resume.pdf" class="btn btn-secondary" id="btn-download-resume" download="Santosh_Kumar_Resume.pdf">Download Resume</a>
+          </div>
+          <div class="hero-social">
+            <a href="https://www.linkedin.com/in/karimisetti-santosh-kumar-78a36a293/" target="_blank" rel="noopener" class="social-icon" id="link-linkedin">LinkedIn ↗</a>
+            <a href="https://github.com/santoshkarimisetti-creator" target="_blank" rel="noopener" class="social-icon" id="link-github">GitHub ↗</a>
+          </div>
         </div>
       </div>
+
+      <!-- Right column: terminal -->
+      <div class="hero-right">
+        <div class="hero-terminal" id="hero-terminal" aria-hidden="true">
+          <div class="terminal-header">
+            <span class="terminal-dot dot-red"></span>
+            <span class="terminal-dot dot-yellow"></span>
+            <span class="terminal-dot dot-green"></span>
+            <span class="terminal-tab">santosh.py</span>
+          </div>
+          <pre class="terminal-body"><code id="terminal-code"></code><span class="terminal-output" id="terminal-output"></span></pre>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -192,36 +176,98 @@
     </div>
   </section>
 
+  <!-- Work Experience Section -->
+  <section id="experience" class="section experience">
+    <div class="container">
+      <h2 class="reveal">Work Experience</h2>
+      <div class="exp-card-wrapper cards-animate">
+        <div class="card exp-card" id="card-experience-1">
+          <div class="exp-header">
+            <div class="exp-info">
+              <div class="exp-company-badge">
+                <span class="exp-company-dot"></span>
+                <span class="exp-company-name">DataPro Computers Pvt Ltd</span>
+              </div>
+              <h3 class="exp-role">Software Development Intern</h3>
+              <p class="exp-duration">&#128197; June 2025</p>
+            </div>
+            <div class="exp-cert-block">
+              <a href="./assets/Certificates/Summer%20Internship%20%40%20DataPro.jpg" target="_blank" class="cert-thumb-link" id="exp-cert-link">
+                <img src="./assets/Certificates/Summer%20Internship%20%40%20DataPro.jpg" alt="Internship Certificate thumbnail" class="cert-thumb" />
+                <span class="cert-thumb-overlay">View Full Size ↗</span>
+              </a>
+              <a href="./assets/Certificates/Summer%20Internship%20%40%20DataPro.jpg" download="DataPro_Internship_Certificate.jpg" class="btn btn-secondary cert-download-btn" id="btn-exp-cert-download">&#8659; Download Certificate</a>
+            </div>
+          </div>
+          <ul class="exp-bullets">
+            <li>Built and integrated React.js UI components with a Django REST backend, handling the full data flow from API response to what the user sees on screen.</li>
+            <li>Implemented CRUD operations against a MongoDB database and independently diagnosed and fixed connectivity and query bugs during development.</li>
+            <li>Worked on a shared codebase with a team — managed tasks through Git, participated in code reviews, and coordinated feature work with other developers.</li>
+          </ul>
+          <div class="exp-takeaways">
+            <h4>Key Takeaways</h4>
+            <ul>
+              <li>How a real full-stack application is structured when multiple people are building it at the same time.</li>
+              <li>Practical Git workflow in a team: branching, merging, and resolving conflicts on a live codebase.</li>
+              <li>How frontend components and backend APIs are connected in production, not just in personal projects.</li>
+              <li>The difference between writing code alone and writing code that others depend on.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Projects Section -->
   <section id="projects" class="section projects">
     <div class="container">
       <h2 class="reveal">Projects</h2>
       <div class="grid cards-animate">
-        <div class="card project-card" id="card-project-1">
+
+        <!-- Featured: AI Driver Safety System -->
+        <div class="card project-card project-featured" id="card-project-1">
+          <span class="featured-badge">&#11088; Featured</span>
           <h3>AI‑Powered Driver Safety &amp; Passenger Security System</h3>
           <div class="stack-pills">
             <span class="pill">Flask</span><span class="pill">React.js</span><span class="pill">MongoDB</span><span class="pill">ML Inference</span>
           </div>
-          <p>Multi‑component real‑time system with ML inference for drowsiness/distraction detection, Flask backend, React.js dashboard, MongoDB.</p>
+          <p>A multi-component real-time safety system built from scratch. An Android app captures the live camera feed, a Flask backend runs ML inference to detect driver drowsiness and distraction, and a React.js dashboard displays live status and alert history — all backed by MongoDB. The hardest engineering challenge was keeping latency low across the full chain; solved by decoupling the ML inference step from the alert dispatch so neither blocks the other.</p>
           <a href="https://github.com/santoshkarimisetti-creator/Intelligent-Vehicle-Safety-and-Passenger-Security-System" class="btn btn-secondary" target="_blank" rel="noopener" id="link-project-1-github">GitHub ↗</a>
         </div>
+
+        <!-- InterviewAI -->
+        <div class="card project-card" id="card-project-interviewai">
+          <h3>InterviewAI — AI-Powered Interview Preparation</h3>
+          <div class="stack-pills">
+            <span class="pill">React.js</span><span class="pill">AI API</span><span class="pill">Lovable</span><span class="pill">Tailwind CSS</span>
+          </div>
+          <p>A fully functional AI-powered interview preparation platform. Users upload their resume, the AI analyses it, generates adaptive interview questions based on the role, scores answers in real time, and provides career fit insights. Built and shipped using Lovable as an AI-assisted development tool — focused on product decisions, prompt design, and delivering a working end-to-end user experience.</p>
+          <p class="ai-tool-label">Built with AI-assisted tooling &middot; Directed &amp; deployed by Santosh</p>
+          <a href="https://ai-coach-mate-24.lovable.app/" class="btn btn-primary" target="_blank" rel="noopener" id="link-project-interviewai-live">Live ↗</a>
+          <a href="https://github.com/santoshkarimisetti-creator/ai-coach-mate-24.git" class="btn btn-secondary" target="_blank" rel="noopener" id="link-project-interviewai-github">GitHub ↗</a>
+        </div>
+
+        <!-- AI Resume Analyzer -->
         <div class="card project-card" id="card-project-2">
           <h3>AI Resume Analyzer</h3>
           <div class="stack-pills">
             <span class="pill">Python</span><span class="pill">Flask</span><span class="pill">React.js</span><span class="pill">Netlify</span><span class="pill">Render</span>
           </div>
-          <p>Full‑stack AI‑powered resume analysis tool with engineered prompts, deployed on Netlify + Render.</p>
+          <p>A full-stack application that accepts a resume, processes it through an AI API using carefully engineered prompts, and returns structured feedback — skills identified, gaps found, and specific suggestions — displayed on a React.js frontend. Deployed with the frontend on Netlify and the backend on Render specifically to learn how production deployment works in practice: environment config, API key management, and how two separately hosted services communicate over HTTP in a live environment.</p>
           <a href="https://ai-resume-analyzer-1.netlify.app/" class="btn btn-primary" target="_blank" rel="noopener" id="link-project-2-live">Live ↗</a>
           <a href="https://github.com/santoshkarimisetti-creator/AI-Resume-Analyzer" class="btn btn-secondary" target="_blank" rel="noopener" id="link-project-2-github">GitHub ↗</a>
         </div>
+
+        <!-- Library Management System -->
         <div class="card project-card" id="card-project-3">
           <h3>Library Management System</h3>
           <div class="stack-pills">
             <span class="pill">Django</span><span class="pill">MySQL</span><span class="pill">JavaScript</span>
           </div>
-          <p>Django + MySQL web app with full schema design, CRUD workflows, and JS‑enhanced frontend.</p>
+          <p>A complete web-based library management system built with Django and MySQL. Designed the relational database schema from scratch — normalised tables for books, members, and issue records with foreign key constraints and indexed queries for filtering and reporting. Built the full Django application including models, views, URL routing, and a JavaScript-enhanced frontend handling book inventory, member management, and issue/return workflows end-to-end.</p>
           <a href="https://github.com/santoshkarimisetti-creator/Library-Management-System" class="btn btn-secondary" target="_blank" rel="noopener" id="link-project-3-github">GitHub ↗</a>
         </div>
+
       </div>
     </div>
   </section>
@@ -231,56 +277,70 @@
     <div class="container">
       <h2 class="reveal">Certifications</h2>
       <div class="grid cards-animate">
+
         <div class="card cert-card" id="card-cert-1">
           <h4>Prompt Engineering for ChatGPT</h4>
           <p>Coursera – 2024</p>
+          <p class="cert-desc">Learned how to design, structure, and iterate on prompts to get consistent and reliable output from large language models. Applied directly in the AI Resume Analyzer project.</p>
           <a href="./assets/Certificates/Prompt%20Engineering%20for%20ChatGPT%20-%20Coursera.png" class="btn btn-secondary" target="_blank" id="btn-cert-1">View Certificate ↗</a>
         </div>
+
         <div class="card cert-card" id="card-cert-2">
           <h4>Data Analysis Using Python</h4>
           <p>Coursera – 2024</p>
+          <p class="cert-desc">Covered data cleaning, manipulation, and analysis using Python libraries including Pandas and NumPy. Strengthened the data preprocessing work used in ML projects.</p>
           <a href="./assets/Certificates/Data%20Analysis%20Using%20Python%20-%20Coursera.png" class="btn btn-secondary" target="_blank" id="btn-cert-2">View Certificate ↗</a>
         </div>
+
         <div class="card cert-card" id="card-cert-3">
           <h4>Business Intelligence &amp; Analytics</h4>
           <p>NPTEL – 2025</p>
+          <p class="cert-desc">Studied how organisations use data to make decisions — covering BI tools, dashboards, KPIs, and analytical thinking frameworks.</p>
           <a href="./assets/Certificates/Businnes%20Intelligence%26Analytics%20-%20NPTEL.png" class="btn btn-secondary" target="_blank" id="btn-cert-3">View Certificate ↗</a>
         </div>
+
         <div class="card cert-card" id="card-cert-4">
           <h4>Software Engineering</h4>
           <p>NPTEL – 2025</p>
+          <p class="cert-desc">Covered software development lifecycle, design principles, requirement analysis, testing, and project management fundamentals.</p>
           <a href="./assets/Certificates/Software%20Engineering%20-NPTEL.png" class="btn btn-secondary" target="_blank" id="btn-cert-4">View Certificate ↗</a>
         </div>
+
         <div class="card cert-card" id="card-cert-5">
           <h4>Programming in Modern C++</h4>
           <p>NPTEL – 2025</p>
+          <p class="cert-desc">Deepened understanding of OOP concepts, memory management, STL, and writing efficient, structured C++ code.</p>
           <a href="./assets/Certificates/Programming%20in%20Modern%20C%2B%2B%20-%20NPTEL.png" class="btn btn-secondary" target="_blank" id="btn-cert-5">View Certificate ↗</a>
         </div>
+
         <div class="card cert-card" id="card-cert-6">
           <h4>TCS Data Visualization</h4>
           <p>Forage – 2024</p>
+          <p class="cert-desc">Completed a virtual job simulation with Tata Group — analysed business data and created visualisations to present insights to a client stakeholder.</p>
           <a href="./assets/Certificates/Tata%20Data%20Visualization%20internship.png" class="btn btn-secondary" target="_blank" id="btn-cert-6">View Certificate ↗</a>
         </div>
+
         <div class="card cert-card" id="card-cert-7">
           <h4>Introduction to Generative AI</h4>
           <p>Coursera – 2024</p>
+          <p class="cert-desc">Learned the fundamentals of how generative AI models work, including LLMs, diffusion models, and practical use cases in software development.</p>
           <a href="./assets/Certificates/Introduction%20to%20Generative%20AI%20-%20Coursera.png" class="btn btn-secondary" target="_blank" id="btn-cert-7">View Certificate ↗</a>
         </div>
+
         <div class="card cert-card" id="card-cert-8">
           <h4>Foundations: Data, Data Everywhere</h4>
           <p>Coursera – 2024</p>
+          <p class="cert-desc">Google's foundational data analytics course — covered the data analysis process, tools, and how to ask the right questions of a dataset.</p>
           <a href="./assets/Certificates/Foundations%20Data%2C%20Data%20Everywhere%20-%20Coursera.png" class="btn btn-secondary" target="_blank" id="btn-cert-8">View Certificate ↗</a>
         </div>
+
         <div class="card cert-card" id="card-cert-9">
           <h4>Tableau for Beginners</h4>
           <p>2024</p>
+          <p class="cert-desc">Learned to build interactive dashboards and visualisations in Tableau, connecting data sources and presenting findings clearly.</p>
           <a href="./assets/Certificates/Tableau%20for%20Beginners.png" class="btn btn-secondary" target="_blank" id="btn-cert-9">View Certificate ↗</a>
         </div>
-        <div class="card cert-card" id="card-cert-10">
-          <h4>Summer Internship @ DataPro</h4>
-          <p>DataPro Computers – 2024</p>
-          <a href="./assets/Certificates/Summer%20Internship%20%40%20DataPro.jpg" class="btn btn-secondary" target="_blank" id="btn-cert-10">View Certificate ↗</a>
-        </div>
+
       </div>
     </div>
   </section>
@@ -303,7 +363,7 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2025 Karimisetti Santosh Kumar &middot;
+      <p>&copy; 2026 Karimisetti Santosh Kumar &middot;
         <a href="https://www.linkedin.com/in/karimisetti-santosh-kumar-78a36a293/" target="_blank" rel="noopener">LinkedIn</a> &middot;
         <a href="https://github.com/santoshkarimisetti-creator" target="_blank" rel="noopener">GitHub</a>
       </p>

@@ -1,10 +1,10 @@
-// script.js – Portfolio + Cyberpunk Gun Cursor (Full Spec Implementation)
+// script.js – Portfolio + Cyberpunk Gun Cursor
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   REVEAL OBSERVER – text/heading elements only (.reveal class)
-══════════════════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════
+   REVEAL OBSERVER
+═══════════════════════════════════════════════════════════════ */
 const revealIO = new IntersectionObserver((entries, obs) => {
   entries.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('active'); obs.unobserve(e.target); }
@@ -12,13 +12,12 @@ const revealIO = new IntersectionObserver((entries, obs) => {
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   CARD ENTRANCE – pure IntersectionObserver (reliable on file://)
-══════════════════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════
+   CARD ENTRANCE
+═══════════════════════════════════════════════════════════════ */
 document.querySelectorAll('.cards-animate').forEach(grid => {
   const cards = Array.from(grid.querySelectorAll('.card'));
   cards.forEach(c => c.classList.add('card-hidden'));
-
   new IntersectionObserver(([entry], obs) => {
     if (entry.isIntersecting) {
       cards.forEach((c, i) => setTimeout(() => {
@@ -43,28 +42,173 @@ if (contactCard) {
   }, { threshold: 0.1 }).observe(contactCard);
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════
    HERO ANIMATIONS
-══════════════════════════════════════════════════════════════════════════════ */
+═══════════════════════════════════════════════════════════════ */
 window.addEventListener('load', () => {
-  gsap.from('.hero-img',      { opacity: 0, scale: 0.85, duration: 0.8, ease: 'back.out(1.6)', delay: 0.1 });
-  gsap.from('.hero-name',     { opacity: 0, y: 30, duration: 0.7, ease: 'power2.out', delay: 0.25 });
-  gsap.from('.hero-tagline, .hero-location, .hero-cta, .hero-social', {
-    opacity: 0, y: 18, stagger: 0.1, duration: 0.6, ease: 'power2.out', delay: 0.65
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  gsap.from('.hero-img',  { opacity: 0, scale: 0.85, duration: 0.8, ease: 'back.out(1.6)', delay: 0.1 });
+  gsap.from('.hero-name', { opacity: 0, y: 30, duration: 0.7, ease: 'power2.out', delay: 0.25 });
+  gsap.from('.hero-label, .hero-role-line, .hero-tagline-sub, .hero-cta, .hero-social', {
+    opacity: 0, y: 18, stagger: 0.1, duration: 0.6, ease: 'power2.out', delay: 0.55
   });
+  gsap.from('.hero-terminal', { opacity: 0, y: 20, duration: 0.7, ease: 'power2.out', delay: 0.9 });
   gsap.utils.toArray('section h2').forEach(h2 => {
     gsap.from(h2, { opacity: 0, y: 22, duration: 0.65, ease: 'power2.out',
       scrollTrigger: { trigger: h2, start: 'top 90%', once: true } });
   });
+
+  // ── Role cycling typewriter ──
+  const roleEl   = document.getElementById('role-text');
+  const roles    = ['Full-Stack Developer', 'AI & ML Engineer', 'Python Developer', 'Problem Solver', 'System Builder'];
+  let rIdx = 0;
+
+  if (reducedMotion) {
+    if (roleEl) roleEl.textContent = 'System Builder';
+  } else if (roleEl) {
+    function typeRole() {
+      const word = roles[rIdx % roles.length];
+      let i = 0;
+      // Type forward
+      const typer = setInterval(() => {
+        roleEl.textContent = word.slice(0, ++i);
+        if (i >= word.length) {
+          clearInterval(typer);
+          // Pause then delete
+          setTimeout(() => {
+            let j = word.length;
+            const eraser = setInterval(() => {
+              roleEl.textContent = word.slice(0, --j);
+              if (j <= 0) {
+                clearInterval(eraser);
+                rIdx++;
+                setTimeout(typeRole, 200);
+              }
+            }, 40);
+          }, 1500);
+        }
+      }, 80);
+    }
+    setTimeout(typeRole, 700);
+  }
+
+  // ── Terminal code typing ──
+  const termCode   = document.getElementById('terminal-code');
+  const termOutput = document.getElementById('terminal-output');
+
+  // Pre-built HTML lines with syntax spans
+  const LINES = [
+    '<span class="t-kw">class</span> <span class="t-var">Santosh</span><span class="t-pun">:</span>',
+    '    <span class="t-var">name</span>    <span class="t-pun">=</span> <span class="t-str">"Karimisetti Santosh Kumar"</span>',
+    '    <span class="t-var">role</span>    <span class="t-pun">=</span> <span class="t-pun">[</span><span class="t-str">"Full-Stack Dev"</span><span class="t-pun">,</span> <span class="t-str">"AI Engineer"</span><span class="t-pun">,</span> <span class="t-str">"System Builder"</span><span class="t-pun">]</span>',
+    '    <span class="t-var">stack</span>   <span class="t-pun">=</span> <span class="t-pun">[</span><span class="t-str">"Python"</span><span class="t-pun">,</span> <span class="t-str">"Django"</span><span class="t-pun">,</span> <span class="t-str">"Flask"</span><span class="t-pun">,</span> <span class="t-str">"React.js"</span><span class="t-pun">,</span> <span class="t-str">"MongoDB"</span><span class="t-pun">]</span>',
+    '    <span class="t-var">status</span>  <span class="t-pun">=</span> <span class="t-str">"Final Year CSE \u00b7 Open to full-time roles"</span>',
+    '',
+    '    <span class="t-kw">def</span> <span class="t-var">build</span><span class="t-pun">(</span><span class="t-var">self</span><span class="t-pun">):</span>',
+    '        <span class="t-kw">return</span> <span class="t-str">"Systems, not just features."</span>'
+  ];
+
+  if (reducedMotion) {
+    // Show full code instantly
+    if (termCode) termCode.innerHTML = LINES.join('\n');
+    if (termOutput) {
+      termOutput.innerHTML = '<span class="t-prompt">&gt;&gt;&gt; </span><span class="t-var">santosh</span><span class="t-pun">.</span><span class="t-var">build</span><span class="t-pun">()</span>\n<span class="t-out">\'Systems, not just features.\'</span><span class="typing-cursor">|</span>';
+      termOutput.classList.add('visible');
+    }
+  } else if (termCode && termOutput) {
+    // Type each plain-text line at 25ms/char, then reveal HTML version
+    // We type plain text char by char then replace with highlighted HTML
+    const PLAIN = [
+      'class Santosh:',
+      '    name    = "Karimisetti Santosh Kumar"',
+      '    role    = ["Full-Stack Dev", "AI Engineer", "System Builder"]',
+      '    stack   = ["Python", "Django", "Flask", "React.js", "MongoDB"]',
+      '    status  = "Final Year CSE \u00b7 Open to full-time roles"',
+      '',
+      '    def build(self):',
+      '        return "Systems, not just features."'
+    ];
+
+    let lineIdx = 0;
+    let charIdx = 0;
+    let rendered = []; // finished highlighted lines
+
+    function typeLine() {
+      if (lineIdx >= PLAIN.length) {
+        // All lines done – swap to full highlighted HTML
+        termCode.innerHTML = LINES.join('\n');
+        // Show output after 500ms
+        setTimeout(() => {
+          termOutput.innerHTML =
+            '<span class="t-prompt">&gt;&gt;&gt; </span>' +
+            '<span class="t-var">santosh</span><span class="t-pun">.</span><span class="t-var">build</span><span class="t-pun">()</span>\n' +
+            '<span class="t-out">\'Systems, not just features.\'</span><span class="typing-cursor">|</span>';
+          termOutput.classList.add('visible');
+        }, 500);
+        return;
+      }
+
+      const plain = PLAIN[lineIdx];
+
+      if (plain === '') {
+        // Empty line: push and move on instantly
+        rendered.push('');
+        lineIdx++; charIdx = 0;
+        termCode.innerHTML = [...rendered].join('\n');
+        setTimeout(typeLine, 40);
+        return;
+      }
+
+      if (charIdx <= plain.length) {
+        const partial = plain.slice(0, charIdx);
+        termCode.innerHTML = [...rendered, partial].join('\n');
+        charIdx++;
+        setTimeout(typeLine, 25);
+      } else {
+        // Line complete: store highlighted version
+        rendered.push(LINES[lineIdx]);
+        lineIdx++; charIdx = 0;
+        typeLine();
+      }
+    }
+
+    setTimeout(typeLine, 600);
+  }
 });
 
 window.addEventListener('scroll', () => {
   document.documentElement.style.setProperty('--hero-parallax', `${window.scrollY * 0.4}px`);
 }, { passive: true });
 
-/* ═══════════════════════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════
+   NAVBAR ACTIVE STATE ON SCROLL
+═══════════════════════════════════════════════════════════════ */
+const navLinks = document.querySelectorAll('.nav-link');
+
+const activeSectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute('id');
+      navLinks.forEach(link => {
+        if (link.getAttribute('data-section') === id) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+  });
+}, {
+  rootMargin: '-40% 0px -55% 0px', // triggers when section is ~in the middle of viewport
+  threshold: 0
+});
+
+document.querySelectorAll('section[id]').forEach(sec => activeSectionObserver.observe(sec));
+
+/* ═══════════════════════════════════════════════════════════════
    DARK-MODE TOGGLE
-══════════════════════════════════════════════════════════════════════════════ */
+═══════════════════════════════════════════════════════════════ */
 const toggleBtn = document.getElementById('theme-toggle');
 if (toggleBtn) {
   let dark = localStorage.getItem('darkMode') !== null
@@ -79,37 +223,30 @@ if (toggleBtn) {
     r.setProperty('--text-muted', d ? '#A0A8B8'  : '#555566');
     toggleBtn.textContent = d ? '☀️' : '🌙';
     localStorage.setItem('darkMode', d);
+    if (d) {
+      document.body.classList.remove('light-mode');
+    } else {
+      document.body.classList.add('light-mode');
+    }
   }
   applyTheme(dark);
   toggleBtn.addEventListener('click', () => { dark = !dark; applyTheme(dark); });
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════
    CYBERPUNK GUN CURSOR
-   ─────────────────────────────────────────────────────────────────────────
-   States (per design spec):
-   1. IDLE    – gun horizontal, randomly fires bullets every few seconds
-   2. HOVER   – gun smoothly rotates to aim at hovered interactive element
-   3. CLICK   – gun spins 360° → fires bullet toward target → impact
-   4. FIRE    – bullet travels to button with blast + sparks
-   5. REDIRECT– after impact the original action executes (link navigation etc.)
-══════════════════════════════════════════════════════════════════════════════ */
+═══════════════════════════════════════════════════════════════ */
 (function initGunCursor() {
-  const gun = document.getElementById('gun-cursor');
+  const gun    = document.getElementById('gun-cursor');
   const gunSvg = document.getElementById('gun-svg');
   if (!gun || !gunSvg) return;
 
-  let mx = window.innerWidth / 2;
-  let my = window.innerHeight / 2;
-  let currentAngle = 0;     // deg — current visual rotation of the gun
-  let targetAngle  = 0;     // deg — angle we want to smoothly lerp to
-  let hoveredEl    = null;  // currently hovered interactive element
-  let isFiring     = false; // lock to prevent double-fires
+  let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+  let currentAngle = 0, targetAngle = 0;
+  let hoveredEl = null, isFiring = false;
 
-  // ── Track mouse position ──────────────────────────────────────────────────
   document.addEventListener('mousemove', e => {
-    mx = e.clientX;
-    my = e.clientY;
+    mx = e.clientX; my = e.clientY;
     gun.style.left = mx + 'px';
     gun.style.top  = my + 'px';
     if (hoveredEl) targetAngle = calcAngleTo(hoveredEl);
@@ -117,167 +254,133 @@ if (toggleBtn) {
   document.addEventListener('mouseleave', () => gun.style.opacity = '0');
   document.addEventListener('mouseenter', () => gun.style.opacity = '1');
 
-  // ── Smooth rotation lerp loop ─────────────────────────────────────────────
-  // Instead of snap-rotate, we lerp currentAngle → targetAngle each frame
   (function rotateLoop() {
     let diff = targetAngle - currentAngle;
-    // Wrap diff to [-180, 180] so we always take the shortest arc
     while (diff >  180) diff -= 360;
     while (diff < -180) diff += 360;
-    currentAngle += diff * 0.12; // lerp factor — smoother = smaller value
+    currentAngle += diff * 0.12;
     gunSvg.style.transform = `rotate(${currentAngle}deg)`;
     gunSvg.style.transformOrigin = '30% 50%';
     requestAnimationFrame(rotateLoop);
   })();
 
-  // ── Angle from gun centre to an element's centre ──────────────────────────
   function calcAngleTo(el) {
     const r = el.getBoundingClientRect();
     return Math.atan2(r.top + r.height / 2 - my, r.left + r.width / 2 - mx) * (180 / Math.PI);
   }
 
-  // ── Muzzle tip world coordinates ─────────────────────────────────────────
-  // Barrel tip is ~44px from pivot (updated for larger metallic gun SVG)
   function getMuzzleTip(angleDeg) {
     const rad = angleDeg * Math.PI / 180;
     return { x: mx + Math.cos(rad) * 44, y: my + Math.sin(rad) * 44 };
   }
 
-  // ── Interactive selector ──────────────────────────────────────────────────
   const TARGETS = 'a, button, .btn, .pill, .card, input, textarea, select';
 
-  // Bind hover aim to all interactive elements
   function bindHover(el) {
     el.addEventListener('mouseenter', () => {
-      hoveredEl = el;
-      gun.classList.add('aim');
-      targetAngle = calcAngleTo(el);
+      hoveredEl = el; gun.classList.add('aim'); targetAngle = calcAngleTo(el);
     });
     el.addEventListener('mouseleave', () => {
-      hoveredEl   = null;
-      targetAngle = 0;   // return to horizontal
-      gun.classList.remove('aim');
+      hoveredEl = null; targetAngle = 0; gun.classList.remove('aim');
     });
   }
   document.querySelectorAll(TARGETS).forEach(bindHover);
 
-  // ── IDLE random firing ────────────────────────────────────────────────────
-  // Fires a random bullet every 2.5–5 s when not hovering anything
+  // Button click fire reaction
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('button, .btn');
+    if (btn) {
+      gun.style.animation = 'none';
+      gun.offsetHeight;
+      gun.style.animation = 'gunFlip 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards';
+      const flash = document.createElement('div');
+      flash.style.cssText = `position:fixed;left:${e.clientX}px;top:${e.clientY}px;width:20px;height:20px;border-radius:50%;background:radial-gradient(circle, #fffbe6, #FFD700, transparent);pointer-events:none;z-index:99998;transform:translate(-50%,-50%) scale(0);`;
+      document.body.appendChild(flash);
+      flash.style.animation = 'muzzleFlash 0.25s ease-out forwards';
+      flash.addEventListener('animationend', () => flash.remove(), { once: true });
+      setTimeout(() => {
+        gun.style.animation = 'none';
+        gun.style.transform = 'rotate(0deg)';
+      }, 420);
+    }
+  });
+
   function scheduleIdleFire() {
     const delay = 2500 + Math.random() * 2500;
     setTimeout(() => {
       if (!hoveredEl && !isFiring) {
-        const randomAngle = (Math.random() - 0.5) * 60; // ±30° from horizontal
+        const randomAngle = (Math.random() - 0.5) * 60;
         const tip = getMuzzleTip(randomAngle);
         spawnFlash(tip.x, tip.y);
         const rad = randomAngle * Math.PI / 180;
-        const destX = tip.x + Math.cos(rad) * 400;
-        const destY = tip.y + Math.sin(rad) * 400;
-        spawnBullet(tip.x, tip.y, destX, destY, null);
+        spawnBullet(tip.x, tip.y, tip.x + Math.cos(rad) * 400, tip.y + Math.sin(rad) * 400, null);
       }
       scheduleIdleFire();
     }, delay);
   }
   scheduleIdleFire();
 
-  // ── Click handler ─────────────────────────────────────────────────────────
-  // Per spec: click → 360° spin → fire → impact → redirect
   document.addEventListener('click', e => {
     if (isFiring) return;
-    const target = e.target.closest(TARGETS);
-
-    // Only intercept <a> link navigation — buttons fire their own
-    // event listeners immediately on the original click (no need to prevent/re-fire)
+    const target   = e.target.closest(TARGETS);
     const isAnchor = target && target.tagName === 'A';
     if (isAnchor) e.preventDefault();
-
     isFiring = true;
-    gun.style.cursor = 'none';
 
-    // Step 1 – 360° spin (over ~400 ms)
-    const spinStart = currentAngle;
-    const spinEnd   = spinStart + 360;
-    const spinDur   = 400;
-    const spinStart_t = performance.now();
-
+    const spinStart = currentAngle, spinDur = 400, spinStart_t = performance.now();
     function spinFrame(now) {
       const t = Math.min((now - spinStart_t) / spinDur, 1);
-      // ease-in-out quad
       const ease = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
       targetAngle = spinStart + 360 * ease;
-      if (t < 1) {
-        requestAnimationFrame(spinFrame);
-      } else {
-        targetAngle = spinEnd % 360;
-        // Step 2 – fire after spin completes
-        doFire(target, isAnchor);
-      }
+      if (t < 1) requestAnimationFrame(spinFrame);
+      else { targetAngle = spinStart % 360; doFire(target, isAnchor); }
     }
     requestAnimationFrame(spinFrame);
   });
 
   function doFire(targetEl, performRedirect) {
-    // Recoil punch: quickly shift gun backward then return
     gun.classList.add('fire-anim');
     setTimeout(() => gun.classList.remove('fire-anim'), 200);
-
-    // Muzzle flash at barrel tip
     const tip = getMuzzleTip(currentAngle);
     spawnFlash(tip.x, tip.y);
-    // Extra smoke puff
     spawnSmoke(tip.x, tip.y);
 
-    // Determine destination
     let destX, destY;
     if (targetEl) {
       const r = targetEl.getBoundingClientRect();
-      destX = r.left + r.width  / 2;
-      destY = r.top  + r.height / 2;
+      destX = r.left + r.width / 2; destY = r.top + r.height / 2;
     } else {
       const rad = currentAngle * Math.PI / 180;
-      destX = tip.x + Math.cos(rad) * 450;
-      destY = tip.y + Math.sin(rad) * 450;
+      destX = tip.x + Math.cos(rad) * 450; destY = tip.y + Math.sin(rad) * 450;
     }
 
     spawnBullet(tip.x, tip.y, destX, destY, () => {
-      // On impact
       spawnImpact(destX, destY);
       if (targetEl) {
         targetEl.classList.add('element-hit');
         setTimeout(() => targetEl.classList.remove('element-hit'), 350);
       }
-
-      // Redirect after impact
       setTimeout(() => {
         isFiring = false;
-        if (performRedirect && targetEl) {
-          if (targetEl.tagName === 'A' && targetEl.href) {
-            if (targetEl.target === '_blank') {
-              window.open(targetEl.href, '_blank', 'noopener,noreferrer');
-            } else if (targetEl.getAttribute('download') !== null) {
-              const a = document.createElement('a');
-              a.href = targetEl.href;
-              a.download = targetEl.download || '';
-              a.click();
-            } else if (targetEl.href.startsWith('mailto:') || targetEl.href.startsWith('tel:')) {
-              window.location.href = targetEl.href;
-            } else {
-              const hash = targetEl.getAttribute('href');
-              if (hash && hash.startsWith('#')) {
-                document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
-              } else {
-                window.location.href = targetEl.href;
-              }
-            }
-          // Buttons: their click listeners already ran on the original event.
-          // Do NOT call .click() again — that causes an infinite loop.
+        if (performRedirect && targetEl && targetEl.tagName === 'A' && targetEl.href) {
+          if (targetEl.target === '_blank') {
+            window.open(targetEl.href, '_blank', 'noopener,noreferrer');
+          } else if (targetEl.getAttribute('download') !== null) {
+            const a = document.createElement('a');
+            a.href = targetEl.href; a.download = targetEl.download || ''; a.click();
+          } else if (targetEl.href.startsWith('mailto:') || targetEl.href.startsWith('tel:')) {
+            window.location.href = targetEl.href;
+          } else {
+            const hash = targetEl.getAttribute('href');
+            if (hash && hash.startsWith('#')) {
+              document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
+            } else { window.location.href = targetEl.href; }
           }
         }
       }, 120);
     });
   }
 
-  // ── Muzzle Flash ──────────────────────────────────────────────────────────
   function spawnFlash(x, y) {
     const el = document.createElement('div');
     el.className = 'muzzle-flash';
@@ -286,81 +389,49 @@ if (toggleBtn) {
     el.addEventListener('animationend', () => el.remove(), { once: true });
   }
 
-  // ── Smoke puff ────────────────────────────────────────────────────────────
   function spawnSmoke(x, y) {
     const el = document.createElement('div');
-    el.style.cssText = `
-      position:fixed; left:${x}px; top:${y}px;
-      width:16px; height:16px; border-radius:50%;
-      background: radial-gradient(circle, rgba(200,200,200,0.5) 0%, transparent 80%);
-      pointer-events:none; z-index:99994;
-      transform:translate(-50%,-50%) scale(0);
-      animation: smoke-expand 0.5s ease-out forwards;
-    `;
+    el.style.cssText = `position:fixed;left:${x}px;top:${y}px;width:16px;height:16px;border-radius:50%;background:radial-gradient(circle,rgba(200,200,200,0.5) 0%,transparent 80%);pointer-events:none;z-index:99994;transform:translate(-50%,-50%) scale(0);`;
     document.body.appendChild(el);
-    // Inline keyframe via Web Animations API
     el.animate([
-      { transform: 'translate(-50%,-50%) scale(0)',   opacity: 0.7 },
-      { transform: 'translate(-50%,-80%) scale(2.5)', opacity: 0   }
-    ], { duration: 600, easing: 'ease-out', fill: 'forwards' })
-      .onfinish = () => el.remove();
+      { transform:'translate(-50%,-50%) scale(0)',   opacity:0.7 },
+      { transform:'translate(-50%,-80%) scale(2.5)', opacity:0   }
+    ], { duration:600, easing:'ease-out', fill:'forwards' }).onfinish = () => el.remove();
   }
 
-  // ── Bullet ────────────────────────────────────────────────────────────────
   function spawnBullet(sx, sy, tx, ty, onHit) {
     const angle = Math.atan2(ty - sy, tx - sx);
     const dist  = Math.hypot(tx - sx, ty - sy);
-    const dur   = Math.max(80, Math.min(dist / 2.5, 250)); // ms
-
+    const dur   = Math.max(80, Math.min(dist / 2.5, 250));
     const el = document.createElement('div');
     el.className = 'bullet';
-    el.style.cssText = `left:${sx}px;top:${sy}px;transform:rotate(${angle * 180 / Math.PI}deg);`;
+    el.style.cssText = `left:${sx}px;top:${sy}px;transform:rotate(${angle*180/Math.PI}deg);`;
     document.body.appendChild(el);
-
     el.animate([
-      { transform: `rotate(${angle * 180 / Math.PI}deg) translateX(0)`,         opacity: 1   },
-      { transform: `rotate(${angle * 180 / Math.PI}deg) translateX(${dist}px)`, opacity: 0.2 }
-    ], { duration: dur, easing: 'linear', fill: 'forwards' }).onfinish = () => {
-      el.remove();
-      if (onHit) onHit();
-    };
+      { transform:`rotate(${angle*180/Math.PI}deg) translateX(0)`,        opacity:1   },
+      { transform:`rotate(${angle*180/Math.PI}deg) translateX(${dist}px)`,opacity:0.2 }
+    ], { duration:dur, easing:'linear', fill:'forwards' }).onfinish = () => { el.remove(); if (onHit) onHit(); };
   }
 
-  // ── Impact sparks + ring ──────────────────────────────────────────────────
   function spawnImpact(x, y) {
-    // Warm metallic sparks: steel + copper + ember tones (no neon blue)
-    const COLORS = ['#ffaa30', '#ff7010', '#ffdd80', '#cc8833', '#ffffff', '#ff5500'];
-    const COUNT  = 14;
-
-    for (let i = 0; i < COUNT; i++) {
-      const p     = document.createElement('div');
+    const COLORS = ['#ffaa30','#ff7010','#ffdd80','#cc8833','#ffffff','#ff5500'];
+    for (let i = 0; i < 14; i++) {
+      const p   = document.createElement('div');
       p.className = 'impact-particle';
-      const ang   = (Math.PI * 2 / COUNT) * i + (Math.random() - 0.5) * 0.5;
-      const r     = 20 + Math.random() * 32;
-      const size  = 3 + Math.random() * 4;
-      const dur   = 0.3 + Math.random() * 0.3;
-      const color = COLORS[Math.floor(Math.random() * COLORS.length)];
-      p.style.cssText = `
-        left:${x}px;top:${y}px;
-        width:${size}px;height:${size}px;
-        background:${color};
-        box-shadow:0 0 5px ${color};
-        --tx:${Math.cos(ang) * r}px;
-        --ty:${Math.sin(ang) * r}px;
-        --dur:${dur}s;
-      `;
+      const ang = (Math.PI * 2 / 14) * i + (Math.random() - 0.5) * 0.5;
+      const r   = 20 + Math.random() * 32;
+      const sz  = 3 + Math.random() * 4;
+      const dur = 0.3 + Math.random() * 0.3;
+      const col = COLORS[Math.floor(Math.random() * COLORS.length)];
+      p.style.cssText = `left:${x}px;top:${y}px;width:${sz}px;height:${sz}px;background:${col};box-shadow:0 0 5px ${col};--tx:${Math.cos(ang)*r}px;--ty:${Math.sin(ang)*r}px;--dur:${dur}s;`;
       document.body.appendChild(p);
       p.addEventListener('animationend', () => p.remove(), { once: true });
     }
-
-    // Shockwave ring
     const ring = document.createElement('div');
     ring.className = 'impact-ring';
     ring.style.cssText = `left:${x}px;top:${y}px;`;
     document.body.appendChild(ring);
     ring.addEventListener('animationend', () => ring.remove(), { once: true });
-
-    // Second larger ring (staggered)
     setTimeout(() => {
       const ring2 = document.createElement('div');
       ring2.className = 'impact-ring';
@@ -370,11 +441,11 @@ if (toggleBtn) {
     }, 80);
   }
 
-})(); // end initGunCursor
+})();
 
-/* ═══════════════════════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════
    REDUCED MOTION
-══════════════════════════════════════════════════════════════════════════════ */
+═══════════════════════════════════════════════════════════════ */
 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   gsap.globalTimeline.pause();
 }
